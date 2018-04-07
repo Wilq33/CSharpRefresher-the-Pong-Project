@@ -29,18 +29,19 @@ public class Ball : MonoBehaviour {
     {
         if (otherCollider.tag == "Limit")
         {
+            // Collided with top limit
             if (otherCollider.transform.position.y > transform.position.y && ballRigidbody.velocity.y > 0)
             {
-                ballRigidbody new Vector2
+                ballRigidbody.velocity = new Vector2
                     (
                     ballRigidbody.velocity.x,
                     -ballRigidbody.velocity.y
                     );
             }
+            //Collided with bottom limit
             if (otherCollider.transform.position.y < transform.position.y && ballRigidbody.velocity.y < 0)
             {
-                ballRigidbody new Vector2
-                    (
+                ballRigidbody.velocity = new Vector2(
                     ballRigidbody.velocity.x,
                     -ballRigidbody.velocity.y
                     );
