@@ -1,5 +1,7 @@
 # CSharpRefresher-the-Pong-Project
 
+Instructions:
+
 Player 1
 w - up
 s - down
