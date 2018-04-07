@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
+    //Speed multiplier for ball after hitting the paddle 
+    public float difficultyMultiplier = 1.25f;
+    //Speed factor for ball
     public float minXSpeed = 0.8f;
     public float maxXSpeed = 1.2f;
     public float minYSpeed = 0.8f;
@@ -20,18 +23,14 @@ public class Ball : MonoBehaviour {
             Random.Range(minYSpeed, maxYSpeed) * (Random.value > 0.5f ? -1 : 1)
             );
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     //Bouncing ball from the limits
-
     void OnTriggerEnter2D (Collider2D otherCollider)
     {
         if (otherCollider.tag == "Limit")
         {
+            //Sound when colliding with the wall
+            GetComponent<AudioSource>().Play();
             // Collided with top limit
             if (otherCollider.transform.position.y > transform.position.y && ballRigidbody.velocity.y > 0)
             {
@@ -52,20 +51,22 @@ public class Ball : MonoBehaviour {
         }
         else if (otherCollider.tag == "Paddle")
         {
+            //Sound when colliding with the paddle
+            GetComponent<AudioSource>().Play();
             // Collided with left paddle
             if (otherCollider.transform.position.x < transform.position.x && ballRigidbody.velocity.x < 0)
             {
                 ballRigidbody.velocity = new Vector2(
-                -ballRigidbody.velocity.x,
-                ballRigidbody.velocity.y
+                -ballRigidbody.velocity.x * difficultyMultiplier,
+                ballRigidbody.velocity.y * difficultyMultiplier
                 );
             }
             // Collided with right paddle
             if (otherCollider.transform.position.x > transform.position.x && ballRigidbody.velocity.x > 0)
             {
                 ballRigidbody.velocity = new Vector2(
-                -ballRigidbody.velocity.x,
-                ballRigidbody.velocity.y
+                -ballRigidbody.velocity.x * difficultyMultiplier,
+                ballRigidbody.velocity.y * difficultyMultiplier
                 );
             }
         }
