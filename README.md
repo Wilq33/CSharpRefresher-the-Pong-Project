@@ -8,11 +8,13 @@ w - up
 
 s - down
 
+
 Player 2
 
 up arrow - up
 
 down arrow - down
+
 
 Exit the game - ALT + F4
 
