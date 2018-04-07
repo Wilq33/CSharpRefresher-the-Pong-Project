@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    //Prefab for ball
     public GameObject ballPrefab;
+    //Score (text)
     public Text score1Text;
     public Text score2Text;
+    //Limit for the ball on axis x
     public float scoreCoordinates = 3.4f;
 
 
     private Ball currentBall;
+    //Score (ingame)
     private int score1 = 0;
     private int score2 = 0;
 
